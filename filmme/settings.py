@@ -22,10 +22,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-fxauatq66qx739_c+8uewru)jp5aqzcns37k7vw_=eu-+5!zx5'
 
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','django-insecure-fxauatq66qx739_c+8uewru)jp5aqzcns37k7vw_=eu-+5!zx5')
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = bool(os.environ.get('DJANGO_DEBUG',False))
 
 ALLOWED_HOSTS = ['*'] # 접근 가능한 호스트 설정 부분. 우선은 모든 사용자 접근 가능하도록 설정
 
