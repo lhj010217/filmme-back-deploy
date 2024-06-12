@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 
 from pathlib import Path
 from datetime import timedelta
+import django_heroku
 import dj_database_url
 import os
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +29,6 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY','django-insecure-fxauatq66qx739_
 DEBUG = bool(os.environ.get('DJANGO_DEBUG',False))
 
 ALLOWED_HOSTS = ['*'] # 접근 가능한 호스트 설정 부분. 우선은 모든 사용자 접근 가능하도록 설정
-
 
 # Application definition
 
@@ -97,6 +97,8 @@ MIDDLEWARE = [
     'allauth.account.middleware.AccountMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
 ]
+
+django_heroku.settings(locals())
 
 REST_AUTH = {
     'USE_JWT' : True,
